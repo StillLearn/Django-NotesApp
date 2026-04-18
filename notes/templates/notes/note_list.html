@@ -21,6 +21,7 @@
             <p>{{ note.content|truncatewords:30 }}</p>
             <a href="{% url 'note_detail' note.id %}">View</a>
             <a href="{% url 'note_edit' note.id %}">Edit</a>
+            <a href="{% url 'note_delete' note.id %}" onclick="return confirm('Delete this note?')">Delete</a>
         </div>
     {% empty %}
         <p>No notes yet. Create your first note!</p>

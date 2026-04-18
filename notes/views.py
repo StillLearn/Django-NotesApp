@@ -29,3 +29,8 @@ def note_edit(request, note_id):
         note.save()
         return redirect('note_list')
     return render(request, 'notes/note_form.html', {'note': note})
+
+def note_delete(request, note_id):
+    note = Note.objects.get(id=note_id)
+    note.delete()
+    return redirect('note_list')
