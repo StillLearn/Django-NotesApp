@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ note.title }}</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        a { margin-right: 10px; }
+        .btn { background: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>{{ note.title }}</h1>
+    <p><strong>Subject:</strong> {{ note.subject.name }}</p>
+    <p><strong>Created:</strong> {{ note.created_at }}</p>
+    <hr>
+    <div>{{ note.content|linebreaks }}</div>
+    <hr>
+    <a href="{% url 'note_edit' note.id %}">Edit</a>
+    <a href="{% url 'note_list' %}">Back to Notes</a>
+</body>
+</html>

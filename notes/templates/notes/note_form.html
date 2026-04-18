@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if note %}Edit{% else %}New{% endif %} Note</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        input, textarea { width: 100%; margin: 5px 0 15px; padding: 10px; box-sizing: border-box; }
+        textarea { height: 200px; }
+        .btn { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>{% if note %}Edit{% else %}New{% endif %} Note</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Title</label>
+        <input type="text" name="title" value="{{ note.title|default:'' }}" required>
+        <label>Subject</label>
+        <input type="text" name="subject" value="{{ note.subject.name|default:'' }}" placeholder="e.g., Math, History" required>
+        <label>Content</label>
+        <textarea name="content" required>{{ note.content|default:'' }}</textarea>
+        <button class="btn" type="submit">Save</button>
+    </form>
+</body>
+</html>
